@@ -17,7 +17,7 @@ public class Box {
 		holes = new Hole[9];
 		
 		for (int i = 0; i < 9; i++) {
-			holes[i] = new Hole(i+3);
+			holes[i] = new Hole(i+3, this);
 		}
 	}
 	

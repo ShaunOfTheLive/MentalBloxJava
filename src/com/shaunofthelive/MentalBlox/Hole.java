@@ -10,8 +10,9 @@ package com.shaunofthelive.MentalBlox;
 public class Hole {
 	private int number;		// name this better?
 	private int owner;	// name this better and change the type
+	private Box parentBox;
 	
-	public Hole(int number) {
+	public Hole(int number, Box parentBox) {
 		this.number = number;
 		this.owner = 0;
 	}
@@ -30,6 +31,10 @@ public class Hole {
 
 	public int getNumber() {
 		return number;
+	}
+	
+	public Box getParentBox() {
+		return parentBox;
 	}
 /*
 	private void setNumber(int number) {

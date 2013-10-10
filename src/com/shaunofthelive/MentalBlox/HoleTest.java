@@ -9,13 +9,13 @@ public class HoleTest {
 
 	@Test
 	public void testHole() {
-		Hole hole = new Hole(3);
+		Hole hole = new Hole(3, null);
 		assertThat(hole, notNullValue());
 	}
 
 	@Test
 	public void testIsCaptured() {
-		Hole hole = new Hole(3);
+		Hole hole = new Hole(3, null);
 		assertThat(hole.isCaptured(), is(false));
 		hole.capture(1);
 		assertThat(hole.isCaptured(), is(true));
@@ -25,16 +25,16 @@ public class HoleTest {
 
 	@Test
 	public void testGetSetOwner() {
-		Hole hole = new Hole(3);
+		Hole hole = new Hole(3, null);
 		hole.capture(1);
 		assertThat(hole.getOwner(), is(1));
 	}
 
 	@Test
 	public void testGetNumber() {
-		Hole hole = new Hole(3);
+		Hole hole = new Hole(3, null);
 		assertThat(hole.getNumber(), is(3));
-		hole = new Hole(6);
+		hole = new Hole(6, null);
 		assertThat(hole.getNumber(), is(6));
 	}
 
