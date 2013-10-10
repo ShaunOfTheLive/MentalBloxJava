@@ -11,6 +11,7 @@ public class Board {
 		}
 	}
 	
+	//TODO: custom exception for out of bounds
 	public Box getBox(int number) {
 		return boxes[number-3];
 	}

@@ -21,6 +21,7 @@ public class Box {
 		}
 	}
 	
+	//TODO: custom exception for out of bounds
 	public Hole getHole(int number) {
 		return holes[number-3];
 	}
