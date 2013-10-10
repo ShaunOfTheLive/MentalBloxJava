@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.shaunofthelive.MentalBlox.Box.Box;
+
 public class BoxTest {
 
 	@Test

@@ -1,4 +1,5 @@
-package com.shaunofthelive.MentalBlox;
+package com.shaunofthelive.MentalBlox.Box;
+
 
 public class HoleEventHandler {
 	public static void holeUpdated(Hole hole) {

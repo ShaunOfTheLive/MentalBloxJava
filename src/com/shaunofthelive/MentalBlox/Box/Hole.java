@@ -1,7 +1,8 @@
 /**
  * 
  */
-package com.shaunofthelive.MentalBlox;
+package com.shaunofthelive.MentalBlox.Box;
+
 
 /**
  * @author Shaun Hill
@@ -12,9 +13,10 @@ public class Hole {
 	private int owner;	// name this better and change the type
 	private Box parentBox;
 	
-	public Hole(int number, Box parentBox) {
+	Hole(int number, Box parentBox) {
 		this.number = number;
 		this.owner = 0;
+		this.parentBox = parentBox;
 	}
 	
 	public boolean isCaptured() {
@@ -22,6 +24,11 @@ public class Hole {
 	}
 	
 	public void capture(int player) {
+		owner = player;
+		HoleEventHandler.holeUpdated(this);
+	}
+	
+	public void setOwner(int player) {
 		owner = player;
 	}
 	

@@ -1,5 +1,7 @@
 package com.shaunofthelive.MentalBlox;
 
+import com.shaunofthelive.MentalBlox.Box.Box;
+
 public class Board {
 	private Box[] boxes;
 	

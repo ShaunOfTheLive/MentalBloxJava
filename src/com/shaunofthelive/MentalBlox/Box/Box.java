@@ -1,7 +1,8 @@
 /**
  * 
  */
-package com.shaunofthelive.MentalBlox;
+package com.shaunofthelive.MentalBlox.Box;
+
 
 /**
  * @author Shaun Hill
@@ -37,16 +38,23 @@ public class Box {
 		return holeOwnerArray;
 	}
 	
-	private int getHoleIndex(Hole hole) {
+	private int getHoleIndex(Hole hole) throws IndexOutOfBoundsException {
 		int i = 0;
 		for (; i < 9; i++) {
 			if (holes[i] == hole) break;
+		}
+		if (i == 9) {
+			throw new IndexOutOfBoundsException("Hole " + hole + " not found in box " + this);
 		}
 		return i;
 	}
 	
 	public int getHoleRow(Hole hole) {
-		return getHoleIndex(hole) / 3;
+		int holeRow = getHoleIndex(hole) / 3;
+		if (holeRow > 2) {
+			throw new IndexOutOfBoundsException("holeRow = " + holeRow + "; index = " + getHoleIndex(hole));
+		}
+		return holeRow;
 	}
 	
 	public int getHoleCol(Hole hole) {
@@ -60,7 +68,7 @@ public class Box {
 	public void capture(int player) {
 		owner = player;
 		for (int i = 0; i < 9; i++) {
-			holes[i].capture(player);
+			holes[i].setOwner(player); //capture causes stack overflow
 		}
 	}
 	
