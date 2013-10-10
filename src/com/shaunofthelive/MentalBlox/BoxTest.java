@@ -49,4 +49,31 @@ public class BoxTest {
 		assertThat(box.getNumber(), is(3));
 	}
 
+	@Test
+	public void testGetHoleRow() {
+		Box box = new Box(3);
+		assertThat(box.getHoleRow(box.getHole(3)), is(0));
+		assertThat(box.getHoleRow(box.getHole(4)), is(0));
+		assertThat(box.getHoleRow(box.getHole(5)), is(0));
+		assertThat(box.getHoleRow(box.getHole(6)), is(1));
+		assertThat(box.getHoleRow(box.getHole(7)), is(1));
+		assertThat(box.getHoleRow(box.getHole(8)), is(1));
+		assertThat(box.getHoleRow(box.getHole(9)), is(2));
+		assertThat(box.getHoleRow(box.getHole(10)), is(2));
+		assertThat(box.getHoleRow(box.getHole(11)), is(2));
+	}
+	
+	@Test
+	public void testGetHoleCol() {
+		Box box = new Box(3);
+		assertThat(box.getHoleCol(box.getHole(3)), is(0));
+		assertThat(box.getHoleCol(box.getHole(4)), is(1));
+		assertThat(box.getHoleCol(box.getHole(5)), is(2));
+		assertThat(box.getHoleCol(box.getHole(6)), is(0));
+		assertThat(box.getHoleCol(box.getHole(7)), is(1));
+		assertThat(box.getHoleCol(box.getHole(8)), is(2));
+		assertThat(box.getHoleCol(box.getHole(9)), is(0));
+		assertThat(box.getHoleCol(box.getHole(10)), is(1));
+		assertThat(box.getHoleCol(box.getHole(11)), is(2));
+	}
 }
