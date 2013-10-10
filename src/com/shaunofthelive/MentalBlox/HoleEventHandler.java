@@ -22,15 +22,15 @@ public class HoleEventHandler {
 		int row = box.getHoleRow(hole);
 		if (owner == holeOwnerArray[row][0] &&
 			owner == holeOwnerArray[row][1] &&
-			owner == holeOnwerArray[row][2]) {
+			owner == holeOwnerArray[row][2]) {
 			box.capture(owner);
 		}
 		
 		// check column
 		int col = box.getHoleCol(hole);
 		if (owner == holeOwnerArray[0][col] &&
-			owner == holeOwnerArray[1][col]] &&
-			owner == holeOnwerArray[2][col]) {
+			owner == holeOwnerArray[1][col] &&
+			owner == holeOwnerArray[2][col]) {
 				box.capture(owner);
 			}
 		
