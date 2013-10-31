@@ -44,6 +44,12 @@ public class BoardPanel extends JPanel {
         g2d.drawLine(256,   0, 256, 768);
         g2d.drawLine(512,   0, 512, 768);
         g2d.drawLine(766,   0, 766, 768);
+        /*
+         * TODO: decide whether we want fixed or dynamic layout
+         * if fixed, decide whether coordinates are based on
+         *   outer window size of 768 (in which case panel will be smaller)
+         * 
+         */
         
     }
 
