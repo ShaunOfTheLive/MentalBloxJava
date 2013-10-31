@@ -4,21 +4,23 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
-public class GameWindow extends JFrame {
+public class GameWindow {
 	
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+	private JFrame frame;
 
 	public GameWindow() {
         
-        setTitle("Mental Blox");
-        setSize(768, 768);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);        
+		frame = new JFrame();
+		frame.setTitle("Mental Blox");
+		frame.setSize(768, 768);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
      }
+	
+	public JFrame getFrame() {
+		return frame;
+	}
      
 
      public static void main(String[] args) {
@@ -26,8 +28,8 @@ public class GameWindow extends JFrame {
          SwingUtilities.invokeLater(new Runnable() {
              @Override
              public void run() {
-                 GameWindow ex = new GameWindow();
-                 ex.setVisible(true);
+                 GameWindow gw = new GameWindow();
+                 gw.getFrame().setVisible(true);
              }
          });
      }
