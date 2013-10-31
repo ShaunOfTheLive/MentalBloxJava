@@ -17,8 +17,9 @@ public class GameWindow {
 		frame.setSize(768, 768);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		frame.getContentPane().setBackground(new Color(75,125,178));
+			
+		BoardPanel boardPanel = new BoardPanel();
+		frame.add(boardPanel);
 		
      }
 	
