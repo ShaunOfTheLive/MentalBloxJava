@@ -36,6 +36,6 @@ public class MentalBlox {
 		System.out.println("Player 2 rolls " + player2roll);
 		System.out.println("Player " + currentPlayer + " starts.");
 		
-		GameWindow.main(null);
+		GameWindow.launch();
 	}
 }
