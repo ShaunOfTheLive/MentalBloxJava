@@ -14,7 +14,7 @@ public class GameWindow extends JFrame {
 
 	public GameWindow() {
         
-        setTitle("Simple example");
+        setTitle("Mental Blox");
         setSize(300, 200);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);        
