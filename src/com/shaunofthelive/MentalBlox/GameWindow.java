@@ -1,5 +1,7 @@
 package com.shaunofthelive.MentalBlox;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
@@ -15,6 +17,8 @@ public class GameWindow {
 		frame.setSize(768, 768);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame.getContentPane().setBackground(new Color(75,125,178));
 		
      }
 	
