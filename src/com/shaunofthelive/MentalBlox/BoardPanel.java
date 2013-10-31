@@ -35,15 +35,15 @@ public class BoardPanel extends JPanel {
         g2d.setColor(Color.white);
         g2d.setStroke(gridStroke);
         // horizontal lines
-        g2d.drawLine(  0,   0, 768,   0);
+        g2d.drawLine(  0,   2, 768,   2);
         g2d.drawLine(  0, 256, 768, 256);
         g2d.drawLine(  0, 512, 768, 512);
-        g2d.drawLine(  0, 768, 768, 768);
+        g2d.drawLine(  0, 766, 768, 766);
         // vertical lines
-        g2d.drawLine(  0,   0,   0, 768);
+        g2d.drawLine(  2,   0,   2, 768);
         g2d.drawLine(256,   0, 256, 768);
         g2d.drawLine(512,   0, 512, 768);
-        g2d.drawLine(768,   0, 768, 768);
+        g2d.drawLine(766,   0, 766, 768);
         
     }
 
