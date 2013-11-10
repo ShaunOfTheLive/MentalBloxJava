@@ -17,6 +17,8 @@ public class GameWindow {
 		frame.setSize(768, 768);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setResizable(false);
+		//frame.pack();
 			
 		BoardPanel boardPanel = new BoardPanel();
 		frame.add(boardPanel);
