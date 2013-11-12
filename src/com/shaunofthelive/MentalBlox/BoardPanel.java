@@ -68,15 +68,7 @@ public class BoardPanel extends JPanel {
 		strokeWidth = 5;
 		
 		halfStroke = (int)(strokeWidth/2);
-		
-	       addComponentListener(new ComponentAdapter() {
-
-	            public void componentShown(ComponentEvent e) {
-	            	System.out.println("componentShown");
-	            }
-	            
-	       });
-	       		
+			       		
         addComponentListener(new ComponentAdapter() {
 
             public void componentResized(ComponentEvent e) {
