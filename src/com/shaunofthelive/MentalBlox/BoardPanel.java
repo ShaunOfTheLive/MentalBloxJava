@@ -40,8 +40,6 @@ public class BoardPanel extends JPanel {
 		}
 		
 		private void draw(Graphics2D g2d) {
-//			System.out.println("we're inside draw of " + this);
-//			System.out.println("\tg2d is " + g2d);
 			g2d.drawLine(x1, y1, x2, y2); 
 		}
 	}
