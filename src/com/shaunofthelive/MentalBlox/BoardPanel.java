@@ -93,11 +93,7 @@ public class BoardPanel extends JPanel {
                         + c.getSize().height);
           	
             	int height = getSize().height;
-            	
-//            	JFrame frame = ((JFrame) ((JComponent) c).getTopLevelAncestor());
-//            	c.setPreferredSize(new Dimension(height, height));
-//            	frame.pack();
-            	
+            	            	
             	((BoardPanel)c).resizePanel(height, height);
             	
             	//TODO: move this to GameWindow constructor, using pack and getInsets?
