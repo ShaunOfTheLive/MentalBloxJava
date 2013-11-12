@@ -152,23 +152,16 @@ public class BoardPanel extends JPanel {
         
         g2d.setColor(Color.white);
         g2d.setStroke(gridStroke);
-//        // horizontal lines
-//        g2d.drawLine(  0,   2, 768,   2);
-//        g2d.drawLine(  0, 256, 768, 256);
-//        g2d.drawLine(  0, 512, 768, 512);
-//        g2d.drawLine(  0, 766, 768, 766);
+
         for (int i = 0; i < 4; i++) {
         	System.out.println("calling draw on line " + linesHorz[i]);
         	linesHorz[i].draw(g2d);
         }
-//        // vertical lines
-//        g2d.drawLine(  2,   0,   2, 768);
-//        g2d.drawLine(256,   0, 256, 768);
-//        g2d.drawLine(512,   0, 512, 768);
-//        g2d.drawLine(766,   0, 766, 768);
+
         for (int i = 0; i < 4; i++) {
         	linesVert[i].draw(g2d);
         }
+        
         /*
          * TODO: decide whether we want fixed or dynamic layout
          * if fixed, decide whether coordinates are based on
