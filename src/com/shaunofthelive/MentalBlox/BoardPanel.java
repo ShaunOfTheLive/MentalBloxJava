@@ -124,8 +124,13 @@ public class BoardPanel extends JPanel {
 	private void resizePanel(int width, int height) {
     	JFrame frame = (JFrame) getTopLevelAncestor();
     	
+    	height = height-10;
+    	width = height;   // panel will always be square
+    	System.out.println("width: " + width);
+    	System.out.println("height: " + height);
+    	
     	removeComponentListener(resizeListener);
-    	setPreferredSize(new Dimension(height-10, height-10));
+    	setPreferredSize(new Dimension(height, height));
     	frame.pack();
     	addComponentListener(resizeListener);
 		
