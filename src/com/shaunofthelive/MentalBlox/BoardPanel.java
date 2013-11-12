@@ -126,8 +126,11 @@ public class BoardPanel extends JPanel {
 		System.out.println("entering resizePanel");
 		
     	JFrame frame = (JFrame) getTopLevelAncestor();
+    	
+    	removeComponentListener(resizeListener);
     	setPreferredSize(new Dimension(height, height));
     	frame.pack();
+    	addComponentListener(resizeListener);
 		
 		panelWidth = width;
 		panelHeight = height;
