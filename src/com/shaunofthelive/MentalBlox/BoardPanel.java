@@ -8,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -44,6 +46,57 @@ public class BoardPanel extends JPanel {
 		}
 	}
 	
+	public class ResizeListener implements ComponentListener {
+
+		@Override
+		public void componentHidden(ComponentEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void componentMoved(ComponentEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void componentResized(ComponentEvent arg0) {
+        	System.out.println("componentResized");
+        	Component c = arg0.getComponent();
+
+        	System.out.println("componentResized event from "
+                    + c.getClass().getName()
+                    + "; new size: "
+                    + c.getSize().width
+                    + ", "
+                    + c.getSize().height);
+      	
+        	int height = getSize().height;
+        	            	
+        	((BoardPanel)c).resizePanel(height, height);
+        	
+        	//TODO: move this to GameWindow constructor, using pack and getInsets?
+        	//setResizable(false) has 10-pixel bug!
+        	//if we remove 10 pixels in here, window will keep resizing itself down to nothing
+        	
+        	System.out.println("RESIZED TO "
+                    + c.getClass().getName()
+                    + "; new size: "
+                    + c.getSize().width
+                    + ", "
+                    + c.getSize().height);
+			
+		}
+
+		@Override
+		public void componentShown(ComponentEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
 	private Line[] linesHorz;
 	private Line[] linesVert;
 	private int panelWidth;
@@ -51,6 +104,8 @@ public class BoardPanel extends JPanel {
 	
 	private int strokeWidth;
 	private int halfStroke;
+	
+	ResizeListener resizeListener;
 	
 	/* CONSTRUCTOR */
 	public BoardPanel() {
@@ -68,39 +123,9 @@ public class BoardPanel extends JPanel {
 		strokeWidth = 5;
 		
 		halfStroke = (int)(strokeWidth/2);
-			       		
-        addComponentListener(new ComponentAdapter() {
 
-            public void componentResized(ComponentEvent e) {
-            	System.out.println("componentResized");
-            	Component c = e.getComponent();
-
-            	System.out.println("componentResized event from "
-                        + c.getClass().getName()
-                        + "; new size: "
-                        + c.getSize().width
-                        + ", "
-                        + c.getSize().height);
-          	
-            	int height = getSize().height;
-            	            	
-            	((BoardPanel)c).resizePanel(height, height);
-            	
-            	//TODO: move this to GameWindow constructor, using pack and getInsets?
-            	//setResizable(false) has 10-pixel bug!
-            	//if we remove 10 pixels in here, window will keep resizing itself down to nothing
-            	
-            	System.out.println("RESIZED TO "
-                        + c.getClass().getName()
-                        + "; new size: "
-                        + c.getSize().width
-                        + ", "
-                        + c.getSize().height);
-            	
-            	
-            }
-
-         });
+		resizeListener = new ResizeListener();
+		addComponentListener(resizeListener);
 	}
 
 	private void resizePanel(int width, int height) {
