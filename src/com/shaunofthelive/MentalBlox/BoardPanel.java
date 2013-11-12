@@ -58,7 +58,6 @@ public class BoardPanel extends JPanel {
 
 		@Override
 		public void componentResized(ComponentEvent arg0) {
-        	System.out.println("componentResized");
         	Component c = arg0.getComponent();
 
         	System.out.println("componentResized event from "
@@ -123,8 +122,6 @@ public class BoardPanel extends JPanel {
 	}
 
 	private void resizePanel(int width, int height) {
-		System.out.println("entering resizePanel");
-		
     	JFrame frame = (JFrame) getTopLevelAncestor();
     	
     	removeComponentListener(resizeListener);
@@ -148,8 +145,6 @@ public class BoardPanel extends JPanel {
 	}
 	
 	private void draw(Graphics g) {
-		System.out.println("entering draw()");
-
         Graphics2D g2d = (Graphics2D) g;
 
         BasicStroke gridStroke = new BasicStroke(
@@ -162,7 +157,6 @@ public class BoardPanel extends JPanel {
         g2d.setStroke(gridStroke);
 
         for (int i = 0; i < 4; i++) {
-        	System.out.println("calling draw on line " + linesHorz[i]);
         	linesHorz[i].draw(g2d);
         }
 

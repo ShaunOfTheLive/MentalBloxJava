@@ -21,16 +21,7 @@ public class GameWindow {
 		//frame.pack();
 			
 		BoardPanel boardPanel = new BoardPanel();
-		frame.add(boardPanel);
-		
-		frame.addComponentListener(new ComponentAdapter() {
-
-            public void componentShown(ComponentEvent e) {
-            	System.out.println("componentShown (frame)");
-            }
-            
-       });
-		
+		frame.add(boardPanel);	
      }
 	
 	public JFrame getFrame() {
@@ -45,7 +36,6 @@ public class GameWindow {
              public void run() {
                  GameWindow gw = new GameWindow();
                  gw.getFrame().setVisible(true);
-                 System.out.println("setVisible(true)");
              }
          });
      }
