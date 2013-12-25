@@ -10,6 +10,9 @@ package com.shaunofthelive.MentalBlox;
 public class MentalBlox {
 
 	/**
+	 * Main class. Handles logic(?) and launches GameWindow.
+	 * TODO: move game logic into Game?
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
