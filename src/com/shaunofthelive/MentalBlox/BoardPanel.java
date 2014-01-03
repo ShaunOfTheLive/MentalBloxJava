@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.geom.Line2D;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,32 +23,6 @@ public class BoardPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private class Line {
-		private int x1;
-		private int x2;
-		private int y1;
-		private int y2;
-		
-		private Line() {
-			this(0,0,0,0);
-		}
-		
-		private Line(int x1, int y1, int x2, int y2) {
-			setCoords(x1, y1, x2, y2);
-		}
-		
-		private void setCoords(int x1, int y1, int x2, int y2) {
-			this.x1 = x1;
-			this.y1 = y1;
-			this.x2 = x2;
-			this.y2 = y2;
-		}
-		
-		private void draw(Graphics2D g2d) {
-			g2d.drawLine(x1, y1, x2, y2); 
-		}
-	}
 	
 	public class ResizeListener implements ComponentListener {
 
@@ -93,8 +68,8 @@ public class BoardPanel extends JPanel {
 		
 	}
 	
-	private Line[] linesHorz;
-	private Line[] linesVert;
+	private Line2D[] linesHorz;
+	private Line2D[] linesVert;
 	private int panelWidth;
 	private int panelHeight;
 	
@@ -107,13 +82,13 @@ public class BoardPanel extends JPanel {
 	public BoardPanel() {
 		setBackground(new Color(75,125,178));
 		
-		linesHorz = new Line[4];
-		linesVert = new Line[4];
+		linesHorz = new Line2D[4];
+		linesVert = new Line2D[4];
 		for (int i = 0; i < 4; i++) {
-			linesHorz[i] = new Line();
+			linesHorz[i] = new Line2D.Double();
 		}
 		for (int i = 0; i < 4; i++) {
-			linesVert[i] = new Line();
+			linesVert[i] = new Line2D.Double();
 		}
 		
 		strokeWidth = 5;
@@ -141,15 +116,15 @@ public class BoardPanel extends JPanel {
 		panelHeight = height;
 		
 		double spacing = (width - halfStroke*2)/(double)3;
-		linesHorz[0].setCoords(0, halfStroke,         width, halfStroke);
-		linesHorz[1].setCoords(0, (int)(spacing+2),   width, (int)(spacing+2));
-		linesHorz[2].setCoords(0, (int)(spacing*2+2), width, (int)(spacing*2+2));
-		linesHorz[3].setCoords(0, (int)(spacing*3+2), width, (int)(spacing*3+2));
+		linesHorz[0].setLine(0, halfStroke,         width, halfStroke);
+		linesHorz[1].setLine(0, (int)(spacing+2),   width, (int)(spacing+2));
+		linesHorz[2].setLine(0, (int)(spacing*2+2), width, (int)(spacing*2+2));
+		linesHorz[3].setLine(0, (int)(spacing*3+2), width, (int)(spacing*3+2));
 	
-		linesVert[0].setCoords(halfStroke,         0, halfStroke,         height);
-		linesVert[1].setCoords((int)(spacing+2),   0, (int)(spacing+2),   height);
-		linesVert[2].setCoords((int)(spacing*2+2), 0, (int)(spacing*2+2), height);
-		linesVert[3].setCoords((int)(spacing*3+2), 0, (int)(spacing*3+2), height);
+		linesVert[0].setLine(halfStroke,         0, halfStroke,         height);
+		linesVert[1].setLine((int)(spacing+2),   0, (int)(spacing+2),   height);
+		linesVert[2].setLine((int)(spacing*2+2), 0, (int)(spacing*2+2), height);
+		linesVert[3].setLine((int)(spacing*3+2), 0, (int)(spacing*3+2), height);
 	}
 	
 	private void draw(Graphics g) {
@@ -161,11 +136,11 @@ public class BoardPanel extends JPanel {
         g2d.setStroke(gridStroke);
 
         for (int i = 0; i < 4; i++) {
-        	linesHorz[i].draw(g2d);
+        	g2d.draw(linesHorz[i]);
         }
 
         for (int i = 0; i < 4; i++) {
-        	linesVert[i].draw(g2d);
+        	g2d.draw(linesVert[i]);
         }
         
         /*
