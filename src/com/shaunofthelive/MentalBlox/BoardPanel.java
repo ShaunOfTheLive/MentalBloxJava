@@ -6,12 +6,15 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import com.shaunofthelive.MentalBlox.Box.BoxGraphics;
 
 public class BoardPanel extends JPanel {
 	
@@ -152,11 +155,7 @@ public class BoardPanel extends JPanel {
 	private void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
 
-        BasicStroke gridStroke = new BasicStroke(
-        		strokeWidth,
-        		BasicStroke.CAP_BUTT,
-                BasicStroke.JOIN_ROUND,
-                1.0f);
+        BasicStroke gridStroke = new BasicStroke(strokeWidth);
         
         g2d.setColor(Color.white);
         g2d.setStroke(gridStroke);
@@ -175,6 +174,10 @@ public class BoardPanel extends JPanel {
          *   outer window size of 768 (in which case panel will be smaller)
          * 
          */
+        
+        // temporarily call BoxGraphics directly for TEST purposes
+        // TODO: call Box which calls BoxGraphics, and set BoxGraphics.draw back to package
+        BoxGraphics.draw(g2d, new Point(5, 5), 308);
         
     }
 
