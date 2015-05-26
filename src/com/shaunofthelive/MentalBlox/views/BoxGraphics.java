@@ -5,7 +5,36 @@ import java.awt.Point;
 import java.awt.geom.Path2D;
 
 public class BoxGraphics {
-	public static void draw(Graphics2D g2d, Point topLeft, int width) {
+	private Point topLeft;
+	private int width;
+	
+	public BoxGraphics() {
+		this.topLeft = null;
+		this.width = 0;
+	}
+	
+	public BoxGraphics(Point topLeft, int width) {
+		this.topLeft = topLeft;
+		this.width = width;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public Point getTopLeft() {
+		return topLeft;
+	}
+
+	public void setTopLeft(Point topLeft) {
+		this.topLeft = topLeft;
+	}
+
+	public void draw(Graphics2D g2d) {
 		//draw centre lines
 		double perpDist = 0.4*width;
 		double parDist = 0.48*width;
