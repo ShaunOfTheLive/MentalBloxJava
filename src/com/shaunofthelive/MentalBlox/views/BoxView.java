@@ -4,16 +4,16 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.geom.Path2D;
 
-public class BoxGraphics {
+public class BoxView {
 	private Point topLeft;
 	private int width;
 	
-	public BoxGraphics() {
+	public BoxView() {
 		this.topLeft = null;
 		this.width = 0;
 	}
 	
-	public BoxGraphics(Point topLeft, int width) {
+	public BoxView(Point topLeft, int width) {
 		this.topLeft = topLeft;
 		this.width = width;
 	}

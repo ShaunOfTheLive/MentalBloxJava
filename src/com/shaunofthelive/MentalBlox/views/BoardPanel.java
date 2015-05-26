@@ -70,7 +70,7 @@ public class BoardPanel extends JPanel {
 	
 	private Line2D[] linesHorz;
 	private Line2D[] linesVert;
-	private BoxGraphics[][] boxViews;
+	private BoxView[][] boxViews;
 	private int panelWidth;
 	private int panelHeight;
 	
@@ -85,7 +85,7 @@ public class BoardPanel extends JPanel {
 		
 		linesHorz = new Line2D[4];
 		linesVert = new Line2D[4];
-		boxViews = new BoxGraphics[3][3];
+		boxViews = new BoxView[3][3];
 		
 		for (int i = 0; i < 4; i++) {
 			linesHorz[i] = new Line2D.Double();
@@ -96,7 +96,7 @@ public class BoardPanel extends JPanel {
 		
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				boxViews[i][j] = new BoxGraphics();
+				boxViews[i][j] = new BoxView();
 			}
         }
 		
