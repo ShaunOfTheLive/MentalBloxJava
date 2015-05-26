@@ -9,7 +9,7 @@ public class BoxView {
 	private int width;
 	
 	public BoxView() {
-		this.topLeft = null;
+		this.topLeft = new Point(0, 0);
 		this.width = 0;
 	}
 	
