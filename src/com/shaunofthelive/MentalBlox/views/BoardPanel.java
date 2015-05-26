@@ -149,8 +149,10 @@ public class BoardPanel extends JPanel {
          * 
          */
         
-        // temporarily call BoxGraphics directly for TEST purposes
-        // TODO: call Box which calls BoxGraphics, and set BoxGraphics.draw back to package
+        // I should be calling BoxGraphics directly, because it's part of the view
+        // I shouldn't couple it tightly with the box model, even though there's a box graphic for each box model
+        // because if the box model owns the box graphics (view), then I have a view communicating through a model to another view
+        // and then everything is cross-coupled in a weird way
         BoxGraphics.draw(g2d, new Point(5, 5), 308);
         
     }
