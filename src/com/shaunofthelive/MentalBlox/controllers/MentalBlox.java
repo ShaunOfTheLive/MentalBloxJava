@@ -1,7 +1,11 @@
 /**
  * 
  */
-package com.shaunofthelive.MentalBlox;
+package com.shaunofthelive.MentalBlox.controllers;
+
+import com.shaunofthelive.MentalBlox.models.Board;
+import com.shaunofthelive.MentalBlox.models.Die;
+import com.shaunofthelive.MentalBlox.views.GameWindow;
 
 /**
  * @author Shaun Hill

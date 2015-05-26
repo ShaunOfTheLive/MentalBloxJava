@@ -1,7 +1,8 @@
 /**
  * 
  */
-package com.shaunofthelive.MentalBlox.Box;
+package com.shaunofthelive.MentalBlox.models;
+
 
 
 /**

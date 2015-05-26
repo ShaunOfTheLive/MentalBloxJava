@@ -1,4 +1,7 @@
-package com.shaunofthelive.MentalBlox.Box;
+package com.shaunofthelive.MentalBlox.controllers;
+
+import com.shaunofthelive.MentalBlox.models.Box;
+import com.shaunofthelive.MentalBlox.models.Hole;
 
 
 public class HoleEventHandler {

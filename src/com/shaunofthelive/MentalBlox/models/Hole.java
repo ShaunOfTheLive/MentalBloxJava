@@ -1,7 +1,9 @@
 /**
  * 
  */
-package com.shaunofthelive.MentalBlox.Box;
+package com.shaunofthelive.MentalBlox.models;
+
+import com.shaunofthelive.MentalBlox.controllers.HoleEventHandler;
 
 
 /**

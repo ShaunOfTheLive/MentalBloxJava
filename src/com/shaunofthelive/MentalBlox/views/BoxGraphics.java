@@ -1,4 +1,4 @@
-package com.shaunofthelive.MentalBlox.Box;
+package com.shaunofthelive.MentalBlox.views;
 
 import java.awt.Graphics2D;
 import java.awt.Point;

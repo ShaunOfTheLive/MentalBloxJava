@@ -1,4 +1,4 @@
-package com.shaunofthelive.MentalBlox;
+package com.shaunofthelive.MentalBlox.views;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -15,7 +15,6 @@ import java.awt.geom.Line2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.shaunofthelive.MentalBlox.Box.BoxGraphics;
 
 public class BoardPanel extends JPanel {
 	

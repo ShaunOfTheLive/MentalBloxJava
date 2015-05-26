@@ -1,4 +1,4 @@
-package com.shaunofthelive.MentalBlox;
+package com.shaunofthelive.MentalBlox.views;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -8,6 +8,7 @@ import java.awt.event.ComponentEvent;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+
 
 public class GameWindow {
 	

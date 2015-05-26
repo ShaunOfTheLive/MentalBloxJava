@@ -1,11 +1,11 @@
-package com.shaunofthelive.MentalBlox;
+package com.shaunofthelive.MentalBlox.tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.shaunofthelive.MentalBlox.Box.Box;
-import com.shaunofthelive.MentalBlox.Box.Hole;
+import com.shaunofthelive.MentalBlox.models.Box;
+import com.shaunofthelive.MentalBlox.models.Hole;
 
 
 import static org.hamcrest.CoreMatchers.*;

@@ -1,4 +1,4 @@
-package com.shaunofthelive.MentalBlox;
+package com.shaunofthelive.MentalBlox.models;
 
 import java.util.Random;
 
