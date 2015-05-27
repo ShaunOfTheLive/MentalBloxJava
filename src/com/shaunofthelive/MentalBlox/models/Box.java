@@ -85,7 +85,7 @@ public class Box {
 		return holesCaptured[player];
 	}
 	
-	public void updateHolesCaptured() {
+	public void updateHolesCaptured(Hole holeUpdated) {
 		//TODO: improve sloppy code
 		holesCaptured[1] = 0;
 		holesCaptured[2] = 0;
@@ -93,6 +93,51 @@ public class Box {
 		for (int i = 0; i < 9; i++) {
 			if (holes[i].isCaptured()) {
 				holesCaptured[holes[i].getOwner()]++;
+			}
+		}
+		
+		checkIfBoxCaptured(holeUpdated);
+	}
+	
+	private void checkIfBoxCaptured(Hole holeUpdated) {
+		int holeOwner = holeUpdated.getOwner();
+		
+		// check if five holes captured
+		if (getHolesCaptured(holeOwner) == 5) {
+			capture(holeOwner);
+		}
+		
+		// check if three in a row
+		//TODO: improve with matrix algorithms
+		int[][] holeOwnerArray = getHoleOwnerArray();
+		
+		// check row
+		int row = getHoleRow(holeUpdated);
+		if (holeOwner == holeOwnerArray[row][0] &&
+			holeOwner == holeOwnerArray[row][1] &&
+			holeOwner == holeOwnerArray[row][2]) {
+			capture(holeOwner);
+		}
+		
+		// check column
+		int col = getHoleCol(holeUpdated);
+		if (holeOwner == holeOwnerArray[0][col] &&
+			holeOwner == holeOwnerArray[1][col] &&
+			holeOwner == holeOwnerArray[2][col]) {
+				capture(holeOwner);
+			}
+		
+		// check diagonal
+		if (col == row || col + row == 2) { // if on diagonal
+			if (holeOwner == holeOwnerArray[0][0] &&
+				holeOwner == holeOwnerArray[1][1] &&
+				holeOwner == holeOwnerArray[2][2]) {
+				capture(holeOwner);
+			}
+			if (holeOwner == holeOwnerArray[0][2] &&
+					holeOwner == holeOwnerArray[1][1] &&
+					holeOwner == holeOwnerArray[2][0]) {
+					capture(holeOwner);
 			}
 		}
 	}
