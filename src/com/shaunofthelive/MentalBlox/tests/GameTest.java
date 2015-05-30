@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.shaunofthelive.MentalBlox.controllers.Game;
+import com.shaunofthelive.MentalBlox.models.Game;
 
 public class GameTest {
 
