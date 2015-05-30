@@ -9,10 +9,10 @@ import com.shaunofthelive.MentalBlox.models.Game;
 
 public class GameTest {
 
-	@Test
-	public void testGame() {
-		Game game = new Game();
-		assertThat(game, notNullValue());
-	}
-	
+    @Test
+    public void testGame() {
+        Game game = new Game();
+        assertThat(game, notNullValue());
+    }
+
 }
