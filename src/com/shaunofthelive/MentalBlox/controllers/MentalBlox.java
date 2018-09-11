@@ -21,7 +21,7 @@ public class MentalBlox {
     public static void main(String[] args) {
         Game game = new Game();
 
-        GameWindow.launch();
+        GameWindow.launch(game);
         game.start();
 
         System.out.println("Player 1 rolls " + game.getPlayer(1).getLastRoll());

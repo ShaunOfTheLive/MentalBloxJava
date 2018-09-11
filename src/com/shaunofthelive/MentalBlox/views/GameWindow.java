@@ -9,15 +9,18 @@ import java.awt.event.ComponentEvent;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import com.shaunofthelive.MentalBlox.models.Game;
+
 public class GameWindow {
 
     private JFrame frame;
+    private Game gameModel;
 
     /**
      * Creates a frame, and sets its size, location, close operation, and
      * resizable status. Then creates a new BoardPanel and adds the frame to it.
      */
-    public GameWindow() {
+    public GameWindow(Game gameModel) {
         frame = new JFrame();
         frame.setTitle("Mental Blox");
 
@@ -41,7 +44,7 @@ public class GameWindow {
          * we've created a BoardPanel here as a local variable but we're adding
          * it to frame, so it belongs to frame.
          */
-        BoardPanel boardPanel = new BoardPanel();
+        BoardPanel boardPanel = new BoardPanel(gameModel.getBoard());
         frame.add(boardPanel);
     }
 
@@ -52,12 +55,12 @@ public class GameWindow {
     /**
      * Creates a GameWindow class (inside a Runnable) and makes it visible.
      */
-    public static void launch() {
+    public static void launch(Game gameModel) {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                GameWindow gw = new GameWindow();
+                GameWindow gw = new GameWindow(gameModel);
                 gw.getFrame().setVisible(true);
             }
         });

@@ -1,19 +1,23 @@
 package com.shaunofthelive.MentalBlox.views;
 
-import java.awt.Graphics2D;
-import java.awt.Point;
+import com.shaunofthelive.MentalBlox.models.Box;
+
+import java.awt.*;
 import java.awt.geom.Path2D;
 
 public class BoxView {
+    private Box boxModel;
     private Point topLeft;
     private int width;
 
-    public BoxView() {
+    public BoxView(Box boxModel) {
+        this.boxModel = boxModel;
         this.topLeft = new Point(0, 0);
         this.width = 0;
     }
 
-    public BoxView(Point topLeft, int width) {
+    public BoxView(Box boxModel, Point topLeft, int width) {
+        this.boxModel = boxModel;
         this.topLeft = topLeft;
         this.width = width;
     }
@@ -56,5 +60,9 @@ public class BoxView {
 
         g2d.draw(p1);
         g2d.draw(p2);
+
+        // draw box number
+        FontMetrics metrics = g2d.getFontMetrics();
+        g2d.drawString(Integer.toString(boxModel.getNumber()), (float)(x + perpDist), (float)(y + perpDist + metrics.getAscent()));
     }
 }

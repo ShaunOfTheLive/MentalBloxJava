@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.shaunofthelive.MentalBlox.models.Board;
+
 public class BoardPanel extends JPanel {
 
     /**
@@ -75,7 +77,7 @@ public class BoardPanel extends JPanel {
     ResizeListener resizeListener;
 
     /* CONSTRUCTOR */
-    public BoardPanel() {
+    public BoardPanel(Board boardModel) {
         setBackground(new Color(75, 125, 178));
 
         linesHorz = new Line2D[4];
@@ -91,7 +93,7 @@ public class BoardPanel extends JPanel {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                boxViews[i][j] = new BoxView();
+                boxViews[i][j] = new BoxView(boardModel.getBox(i*3+j+3));
             }
         }
 
