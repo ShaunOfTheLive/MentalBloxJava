@@ -4,6 +4,9 @@ import com.shaunofthelive.MentalBlox.models.Box;
 
 import java.awt.*;
 import java.awt.geom.Path2D;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class BoxView {
     private Box boxModel;
@@ -62,6 +65,14 @@ public class BoxView {
         g2d.draw(p2);
 
         // draw box number
+
+        try {
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Oxygen-Bold.ttf")));
+        } catch (IOException |FontFormatException e) {
+            //Handle exception
+        }
 
         g2d.setRenderingHint(
                 RenderingHints.KEY_TEXT_ANTIALIASING,
