@@ -62,7 +62,14 @@ public class BoxView {
         g2d.draw(p2);
 
         // draw box number
-        FontMetrics metrics = g2d.getFontMetrics();
-        g2d.drawString(Integer.toString(boxModel.getNumber()), (float)(x + perpDist), (float)(y + perpDist + metrics.getAscent()));
+
+        g2d.setRenderingHint(
+                RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
+        Font theFont = new Font("Oxygen", Font.BOLD, 20);
+        g2d.setFont(theFont);
+        FontMetrics metrics = g2d.getFontMetrics(theFont);
+        g2d.drawString(Integer.toString(boxModel.getNumber()), (float)(x - 2 + perpDist), (float)(y - 4 + perpDist + metrics.getAscent() - metrics.getDescent() - metrics.getLeading()));
     }
 }
