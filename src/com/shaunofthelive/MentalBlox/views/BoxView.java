@@ -3,6 +3,7 @@ package com.shaunofthelive.MentalBlox.views;
 import com.shaunofthelive.MentalBlox.models.Box;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 import java.io.File;
 import java.io.IOException;
@@ -81,6 +82,11 @@ public class BoxView {
         Font theFont = new Font("Oxygen", Font.BOLD, 20);
         g2d.setFont(theFont);
         FontMetrics metrics = g2d.getFontMetrics(theFont);
-        g2d.drawString(Integer.toString(boxModel.getNumber()), (float)(x - 2 + perpDist), (float)(y - 4 + perpDist + metrics.getAscent() - metrics.getDescent() - metrics.getLeading()));
+        g2d.drawString(Integer.toString(boxModel.getNumber()), (float)(x + perpDist - 2), (float)(y + perpDist + metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 4));
+        AffineTransform affineTransform = new AffineTransform();
+        affineTransform.rotate(Math.toRadians(180), 0, 0);
+        Font rotatedFont = theFont.deriveFont(affineTransform);
+        g2d.setFont(rotatedFont);
+        g2d.drawString(Integer.toString(boxModel.getNumber()), (float)(x + invPerpDist + 3), (float)(y + invPerpDist -(metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 5)));
     }
 }
