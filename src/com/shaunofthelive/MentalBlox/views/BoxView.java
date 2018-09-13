@@ -138,13 +138,10 @@ public class BoxView {
     }
 
     private void resizeOrMove() {
-        System.out.println("width: " + Integer.toString(width));
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
                 holeViews[i][j].setCentre(new Point(Math.round((float)(width*(j+1)/4)) + topLeft.x,
                     Math.round((float)(width*(i+1)/4) + topLeft.y)));
-                System.out.println(holeViews[i][j].getCentre().x);
-                System.out.println(holeViews[i][j].getCentre().y);
             }
         }
     }
