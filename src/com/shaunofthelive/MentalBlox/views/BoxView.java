@@ -140,8 +140,8 @@ public class BoxView {
     private void resizeOrMove() {
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
-                holeViews[i][j].setCentre(new Point(Math.round((float)(width*(j+1)/4)) + topLeft.x,
-                    Math.round((float)(width*(i+1)/4) + topLeft.y)));
+                holeViews[i][j].setCentre(new Point(Math.round((float)(width*(0.2+0.3*j)) + topLeft.x),
+                    Math.round((float)(width*(0.2+0.3*i)) + topLeft.y)));
             }
         }
     }
