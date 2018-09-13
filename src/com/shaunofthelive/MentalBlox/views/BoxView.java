@@ -108,8 +108,8 @@ public class BoxView {
         FontMetrics metrics = g2d.getFontMetrics(theFont);
         BasicStroke underlineStroke = new BasicStroke(2);
         BasicStroke gridStroke = new BasicStroke(strokeWidth);
-        float textX = (float)(x + perpDist - 2);
-        float textY = (float)(y + perpDist + metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 4);
+        float textX = (float)(x + perpDist - 3);
+        float textY = (float)(y + perpDist + metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 5);
         g2d.drawString(boxNumberS, textX, textY);
         if (boxNumber == 6 || boxNumber == 9) {
             g2d.setStroke(underlineStroke);
