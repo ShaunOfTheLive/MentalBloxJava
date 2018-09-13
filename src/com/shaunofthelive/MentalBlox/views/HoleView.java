@@ -37,9 +37,25 @@ public class HoleView {
     }
 
     public void draw(Graphics2D g2d) {
-        // draw dot
+        // draw dot or peg
         Color oldColor = g2d.getColor();
-        g2d.setColor(new Color(45, 74, 106));
+        int holeOwner = holeModel.getOwner();
+        Color color;
+        switch (holeOwner) {
+            case 0:
+                color = new Color(45, 74, 106);
+                break;
+            case 1:
+                color = Color.yellow;
+                break;
+            case 2:
+                color = Color.red;
+                break;
+            default:
+                color = Color.white;
+                break;
+        }
+        g2d.setColor(color);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.fillOval(centre.x - radius, centre.y - radius, 2*radius, 2*radius);

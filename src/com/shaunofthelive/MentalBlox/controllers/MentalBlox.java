@@ -21,6 +21,10 @@ public class MentalBlox {
     public static void main(String[] args) {
         Game game = new Game();
 
+        //debug
+        game.getBoard().getBox(3).getHole(3).capture(1);
+        game.getBoard().getBox(4).getHole(5).capture(2);
+
         GameWindow.launch(game);
         game.start();
 
