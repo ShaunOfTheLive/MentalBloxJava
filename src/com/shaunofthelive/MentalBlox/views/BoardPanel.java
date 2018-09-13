@@ -142,8 +142,8 @@ public class BoardPanel extends JPanel {
             int boxWidth = (int) (linesVert[i + 1].getX1() - linesVert[i]
                     .getX1());
             for (int j = 0; j < 3; j++) {
-                Point topLeft = new Point((int) (linesHorz[i].getY1())
-                        + halfStroke, (int) (linesVert[j].getX1() + halfStroke));
+                Point topLeft = new Point(Math.round((float)(linesHorz[i].getY1()) + halfStroke) + 1,
+                        Math.round((float)(linesVert[j].getX1() + halfStroke)) + 1);
                 // boxViews.add(new BoxGraphics(topLeft, width));
                 boxViews[j][i].setTopLeft(topLeft);
                 boxViews[j][i].setWidth(boxWidth);
