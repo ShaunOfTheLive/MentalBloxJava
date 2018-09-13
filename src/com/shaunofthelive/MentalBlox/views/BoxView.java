@@ -75,14 +75,14 @@ public class BoxView {
         double y = topLeft.y;
 
         Path2D p1 = new Path2D.Double();
-        p1.moveTo(x + perpDist, y + parDist);
-        p1.lineTo(x + perpDist, y + invPerpDist);
-        p1.lineTo(x + invParDist, y + invPerpDist);
+        p1.moveTo(x + perpDist - 1, y + parDist - 1);
+        p1.lineTo(x + perpDist - 1, y + invPerpDist - 1);
+        p1.lineTo(x + invParDist - 1, y + invPerpDist - 1);
 
         Path2D p2 = new Path2D.Double();
-        p2.moveTo(x + parDist, y + perpDist);
-        p2.lineTo(x + invPerpDist, y + perpDist);
-        p2.lineTo(x + invPerpDist, y + invParDist);
+        p2.moveTo(x + parDist - 1, y + perpDist - 1);
+        p2.lineTo(x + invPerpDist - 1, y + perpDist - 1);
+        p2.lineTo(x + invPerpDist - 1, y + invParDist - 1);
 
         g2d.draw(p1);
         g2d.draw(p2);
