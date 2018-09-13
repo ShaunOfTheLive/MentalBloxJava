@@ -5,18 +5,19 @@ import com.shaunofthelive.MentalBlox.models.Hole;
 import java.awt.*;
 
 public class HoleView {
+    private BoxView parent;
     private Hole holeModel;
     private Point centre;
     private int width;
     private int radius;
     private int boxWidth;
 
-    public HoleView(Hole holeModel, int boxWidth) {
+    public HoleView(Hole holeModel, BoxView parent) {
         this.holeModel = holeModel;
         this.centre = new Point(0, 0);
         this.width = 0;
         this.radius = 10;
-        this.boxWidth = boxWidth;
+        this.parent = parent;
     }
 
     public int getWidth() {
@@ -49,15 +50,17 @@ public class HoleView {
         // draw number
         int holeNumber = holeModel.getNumber();
         String holeNumberS = Integer.toString(holeNumber);
+        int boxWidth = parent.getWidth();
+        FontMetrics metrics = g2d.getFontMetrics(g2d.getFont());
 
         int textX = Math.round((float)(centre.x - 0.1*boxWidth));
-        int textY = Math.round((float)(centre.y - 0.1*boxWidth));
+        int textY = Math.round((float)(centre.y - 0.1*boxWidth) + metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 5);
 
         if (holeNumber != 7) {
             g2d.drawString(holeNumberS, textX, textY);
         }
         if (holeNumber == 6 || holeNumber == 9) {
-            //BoxView.drawUnderline(g2d, textX, textY, g2d.getFontMetrics(g2d.getFont()).stringWidth(holeNumberS), textY);
+            BoxView.drawUnderline(g2d, textX + 1, textY + 4, textX + g2d.getFontMetrics(g2d.getFont()).stringWidth(holeNumberS) - 1, textY + 4);
         }
     }
 }

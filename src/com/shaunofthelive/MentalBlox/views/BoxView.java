@@ -34,7 +34,7 @@ public class BoxView {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                holeViews[i][j] = new HoleView(boxModel.getHole(i*3+j+3), width);
+                holeViews[i][j] = new HoleView(boxModel.getHole(i*3+j+3), this);
             }
         }
     }
