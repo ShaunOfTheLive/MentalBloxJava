@@ -3,27 +3,39 @@ package com.shaunofthelive.MentalBlox.views;
 import com.shaunofthelive.MentalBlox.models.Box;
 
 import java.awt.*;
+import java.awt.font.TextAttribute;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.AttributedString;
 
 public class BoxView {
     private Box boxModel;
     private Point topLeft;
     private int width;
+    private int strokeWidth;
 
     public BoxView(Box boxModel) {
         this.boxModel = boxModel;
         this.topLeft = new Point(0, 0);
         this.width = 0;
+        this.strokeWidth = 1;
+    }
+
+    public BoxView(Box boxModel, int strokeWidth) {
+        this.boxModel = boxModel;
+        this.topLeft = new Point(0, 0);
+        this.width = 0;
+        this.strokeWidth = strokeWidth;
     }
 
     public BoxView(Box boxModel, Point topLeft, int width) {
         this.boxModel = boxModel;
         this.topLeft = topLeft;
         this.width = width;
+        this.strokeWidth = 1;
     }
 
     public int getWidth() {
@@ -66,6 +78,8 @@ public class BoxView {
         g2d.draw(p2);
 
         // draw box number
+        int boxNumber = boxModel.getNumber();
+        String boxNumberS = Integer.toString(boxNumber);
 
         try {
             GraphicsEnvironment ge =
@@ -82,11 +96,28 @@ public class BoxView {
         Font theFont = new Font("Oxygen", Font.BOLD, 20);
         g2d.setFont(theFont);
         FontMetrics metrics = g2d.getFontMetrics(theFont);
-        g2d.drawString(Integer.toString(boxModel.getNumber()), (float)(x + perpDist - 2), (float)(y + perpDist + metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 4));
+        BasicStroke underlineStroke = new BasicStroke(2);
+        BasicStroke gridStroke = new BasicStroke(strokeWidth);
+        float textX = (float)(x + perpDist - 2);
+        float textY = (float)(y + perpDist + metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 4);
+        g2d.drawString(boxNumberS, textX, textY);
+        if (boxNumber == 6 || boxNumber == 9) {
+            g2d.setStroke(underlineStroke);
+            g2d.drawLine((int)(textX + 2), (int)(textY + 5), (int)(textX + g2d.getFontMetrics(theFont).stringWidth(boxNumberS)), (int)(textY + 5));
+            g2d.setStroke(gridStroke);
+        }
+
         AffineTransform affineTransform = new AffineTransform();
         affineTransform.rotate(Math.toRadians(180), 0, 0);
         Font rotatedFont = theFont.deriveFont(affineTransform);
         g2d.setFont(rotatedFont);
-        g2d.drawString(Integer.toString(boxModel.getNumber()), (float)(x + invPerpDist + 3), (float)(y + invPerpDist -(metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 5)));
+        textX = (float)(x + invPerpDist + 3);
+        textY = (float)(y + invPerpDist -(metrics.getAscent() - metrics.getDescent() - metrics.getLeading() - 5));
+        g2d.drawString(Integer.toString(boxNumber), textX, textY);
+        if (boxNumber == 6 || boxNumber == 9) {
+            g2d.setStroke(underlineStroke);
+            g2d.drawLine((int)(textX - 1), (int)(textY - 4), (int)(textX - g2d.getFontMetrics(theFont).stringWidth(boxNumberS) + 1), (int)(textY - 4));
+            g2d.setStroke(gridStroke);
+        }
     }
 }

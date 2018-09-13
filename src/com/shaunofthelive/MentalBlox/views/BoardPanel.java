@@ -91,15 +91,14 @@ public class BoardPanel extends JPanel {
             linesVert[i] = new Line2D.Double();
         }
 
+        strokeWidth = 5;
+        halfStroke = (int) (strokeWidth / 2);
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                boxViews[i][j] = new BoxView(boardModel.getBox(i*3+j+3));
+                boxViews[i][j] = new BoxView(boardModel.getBox(i*3+j+3), strokeWidth);
             }
         }
-
-        strokeWidth = 5;
-
-        halfStroke = (int) (strokeWidth / 2);
 
         resizeListener = new ResizeListener();
         addComponentListener(resizeListener);
