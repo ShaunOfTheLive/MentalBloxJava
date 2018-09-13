@@ -40,5 +40,7 @@ public class HoleView {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.fillOval(centre.x - radius, centre.y - radius, 2*radius, 2*radius);
         g2d.setColor(oldColor);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_OFF);
     }
 }
