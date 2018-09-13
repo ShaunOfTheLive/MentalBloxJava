@@ -16,6 +16,7 @@ public class BoxView {
     private Point topLeft;
     private int width;
     private int strokeWidth;
+    private HoleView[][] holeViews;
 
     public BoxView(Box boxModel) {
         this.boxModel = boxModel;
@@ -29,6 +30,13 @@ public class BoxView {
         this.topLeft = new Point(0, 0);
         this.width = 0;
         this.strokeWidth = strokeWidth;
+        holeViews = new HoleView[3][3];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                holeViews[i][j] = new HoleView(boxModel.getHole(i*3+j+3));
+            }
+        }
     }
 
     public BoxView(Box boxModel, Point topLeft, int width) {
@@ -44,6 +52,7 @@ public class BoxView {
 
     public void setWidth(int width) {
         this.width = width;
+        resizeOrMove();
     }
 
     public Point getTopLeft() {
@@ -52,6 +61,7 @@ public class BoxView {
 
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
+        resizeOrMove();
     }
 
     public void draw(Graphics2D g2d) {
@@ -118,6 +128,24 @@ public class BoxView {
             g2d.setStroke(underlineStroke);
             g2d.drawLine((int)(textX - 1), (int)(textY - 4), (int)(textX - g2d.getFontMetrics(theFont).stringWidth(boxNumberS) + 1), (int)(textY - 4));
             g2d.setStroke(gridStroke);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                holeViews[i][j].draw(g2d);
+            }
+        }
+    }
+
+    private void resizeOrMove() {
+        System.out.println("width: " + Integer.toString(width));
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                holeViews[i][j].setCentre(new Point(Math.round((float)(width*(j+1)/4)) + topLeft.x,
+                    Math.round((float)(width*(i+1)/4) + topLeft.y)));
+                System.out.println(holeViews[i][j].getCentre().x);
+                System.out.println(holeViews[i][j].getCentre().y);
+            }
         }
     }
 }
