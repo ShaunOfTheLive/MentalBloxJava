@@ -139,8 +139,7 @@ public class BoardPanel extends JPanel {
 
         // TODO: set box sizes every time panel is resized
         for (int i = 0; i < 3; i++) {
-            int boxWidth = (int) (linesVert[i + 1].getX1() - linesVert[i]
-                    .getX1());
+            int boxWidth = (int) (linesVert[i + 1].getX1() - linesVert[i] .getX1() - strokeWidth);
             for (int j = 0; j < 3; j++) {
                 Point topLeft = new Point(Math.round((float)(linesHorz[i].getY1()) + halfStroke) + 1,
                         Math.round((float)(linesVert[j].getX1() + halfStroke)) + 1);
