@@ -34,7 +34,7 @@ public class BoxView {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                holeViews[i][j] = new HoleView(boxModel.getHole(i*3+j+3));
+                holeViews[i][j] = new HoleView(boxModel.getHole(i*3+j+3), width);
             }
         }
     }
@@ -145,5 +145,14 @@ public class BoxView {
                     Math.round((float)(width*(0.2+0.3*i)) + topLeft.y)));
             }
         }
+    }
+
+    public static void drawUnderline(Graphics2D g2d, int x1, int y1, int x2, int y2) {
+        BasicStroke underlineStroke = new BasicStroke(2);
+        Stroke gridStroke = g2d.getStroke();
+
+        g2d.setStroke(underlineStroke);
+        g2d.drawLine(x1, y1, x2, y2);
+        g2d.setStroke(gridStroke);
     }
 }

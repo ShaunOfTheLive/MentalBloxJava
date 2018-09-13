@@ -9,12 +9,14 @@ public class HoleView {
     private Point centre;
     private int width;
     private int radius;
+    private int boxWidth;
 
-    public HoleView(Hole holeModel) {
+    public HoleView(Hole holeModel, int boxWidth) {
         this.holeModel = holeModel;
         this.centre = new Point(0, 0);
         this.width = 0;
         this.radius = 10;
+        this.boxWidth = boxWidth;
     }
 
     public int getWidth() {
@@ -34,6 +36,7 @@ public class HoleView {
     }
 
     public void draw(Graphics2D g2d) {
+        // draw dot
         Color oldColor = g2d.getColor();
         g2d.setColor(new Color(45, 74, 106));
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -42,5 +45,19 @@ public class HoleView {
         g2d.setColor(oldColor);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_OFF);
+
+        // draw number
+        int holeNumber = holeModel.getNumber();
+        String holeNumberS = Integer.toString(holeNumber);
+
+        int textX = Math.round((float)(centre.x - 0.1*boxWidth));
+        int textY = Math.round((float)(centre.y - 0.1*boxWidth));
+
+        if (holeNumber != 7) {
+            g2d.drawString(holeNumberS, textX, textY);
+        }
+        if (holeNumber == 6 || holeNumber == 9) {
+            //BoxView.drawUnderline(g2d, textX, textY, g2d.getFontMetrics(g2d.getFont()).stringWidth(holeNumberS), textY);
+        }
     }
 }
