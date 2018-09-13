@@ -129,6 +129,7 @@ public class BoxView {
             g2d.drawLine((int)(textX - 1), (int)(textY - 4), (int)(textX - g2d.getFontMetrics(theFont).stringWidth(boxNumberS) + 1), (int)(textY - 4));
             g2d.setStroke(gridStroke);
         }
+        g2d.setFont(theFont);
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
