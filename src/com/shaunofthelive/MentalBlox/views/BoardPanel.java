@@ -16,9 +16,12 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.shaunofthelive.MentalBlox.IObserver;
+import com.shaunofthelive.MentalBlox.controllers.IController;
 import com.shaunofthelive.MentalBlox.models.Board;
+import com.shaunofthelive.MentalBlox.models.Game;
 
-public class BoardPanel extends JPanel {
+public class BoardPanel extends JPanel implements IObserver {
 
     /**
 	 * 
@@ -76,8 +79,16 @@ public class BoardPanel extends JPanel {
 
     ResizeListener resizeListener;
 
+    private Game gameModel;
+    private Board boardModel;
+    private IController controller;
+
     /* CONSTRUCTOR */
-    public BoardPanel(Board boardModel) {
+    public BoardPanel(IController controller, Game gameModel) {
+        this.controller = controller;
+        this.gameModel = gameModel;
+        this.boardModel = gameModel.getBoard();
+
         setBackground(new Color(75, 125, 178));
 
         linesHorz = new Line2D[4];
@@ -102,12 +113,16 @@ public class BoardPanel extends JPanel {
 
         resizeListener = new ResizeListener();
         addComponentListener(resizeListener);
+        panelWidth = 0;
+        panelHeight = 0;
+
+        gameModel.registerObserver(this);
     }
 
     private void resizePanel(int width, int height) {
         JFrame frame = (JFrame) getTopLevelAncestor();
 
-        height = height - 10;
+        //height = height - 10;
         width = height; // panel will always be square
         System.out.println("width: " + width);
         System.out.println("height: " + height);
@@ -184,6 +199,18 @@ public class BoardPanel extends JPanel {
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
+        if (!(panelHeight == getSize().height && panelWidth == getSize().width)) {
+            panelHeight = getSize().height;
+            panelWidth = getSize().width;
+            resizePanel(panelWidth, panelHeight);
+        }
         draw(g);
+    }
+
+    public void update() {
+        System.out.println("Player 1 rolls " + gameModel.getPlayer(1).getLastRoll());
+        System.out.println("Player 2 rolls " + gameModel.getPlayer(2).getLastRoll());
+        System.out.println("Player " + gameModel.getCurrentPlayer().getPlayerNum()
+                + " starts.");
     }
 }

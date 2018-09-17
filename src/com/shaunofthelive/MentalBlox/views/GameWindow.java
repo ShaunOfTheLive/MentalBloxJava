@@ -5,6 +5,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -29,13 +31,12 @@ public class GameWindow {
                 .getLocalGraphicsEnvironment();
         Rectangle bounds = env.getMaximumWindowBounds();
         System.out.println("Screen Bounds: " + bounds);
-        frame.setSize(bounds.height, bounds.height);
+        frame.setSize(bounds.height - 10, bounds.height - 10);
 
         frame.setLocationRelativeTo(null);
 
-        /* window centering hack for Windows 7 and up */
         Point p = frame.getLocation();
-        frame.setLocation(new Point(p.x, p.y + 5));
+        frame.setLocation(new Point(p.x, p.y));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -45,7 +46,7 @@ public class GameWindow {
          * we've created a BoardPanel here as a local variable but we're adding
          * it to frame, so it belongs to frame.
          */
-        BoardPanel boardPanel = new BoardPanel(gameModel.getBoard());
+        BoardPanel boardPanel = new BoardPanel(controller, gameModel);
         frame.add(boardPanel);
         controller.setBoardPanel(boardPanel);
     }
@@ -64,6 +65,16 @@ public class GameWindow {
             public void run() {
                 GameWindow gw = new GameWindow(controller, gameModel);
                 gw.getFrame().setVisible(true);
+                gw.getFrame().addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowOpened(WindowEvent we) {
+                        gameModel.start();
+                    }
+
+                    @Override
+                    public void windowActivated(WindowEvent we) {
+                    }
+                });
             }
         });
     }

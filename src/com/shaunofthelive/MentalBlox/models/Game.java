@@ -61,7 +61,7 @@ public class Game {
                 break;
             }
         }
-
+        notifyObservers();
     }
 
     public void registerObserver(IObserver o) {

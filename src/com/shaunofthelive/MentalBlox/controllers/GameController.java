@@ -11,11 +11,14 @@ public class GameController implements IController {
     public GameController(Game game) {
         this.game = game;
         GameWindow.launch(this, game);
-        game.start();
     }
 
     public void setBoardPanel(BoardPanel boardPanel) {
         this.boardPanel = boardPanel;
+    }
+
+    public void start() {
+        game.start();
     }
 }
 
