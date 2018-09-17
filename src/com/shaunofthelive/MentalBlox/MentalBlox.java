@@ -3,9 +3,8 @@
  */
 package com.shaunofthelive.MentalBlox;
 
-import com.shaunofthelive.MentalBlox.controllers.PlayerController;
+import com.shaunofthelive.MentalBlox.controllers.GameController;
 import com.shaunofthelive.MentalBlox.models.Game;
-import com.shaunofthelive.MentalBlox.views.GameWindow;
 
 /**
  * @author Shaun Hill
@@ -21,7 +20,7 @@ public class MentalBlox {
      */
     public static void main(String[] args) {
         Game game = new Game();
-        PlayerController playerController = new PlayerController(game);
+        GameController gameController = new GameController(game);
 
         //debug
         game.getBoard().getBox(3).getHole(3).capture(1);
