@@ -1,10 +1,16 @@
 package com.shaunofthelive.MentalBlox.models;
 
+import com.shaunofthelive.MentalBlox.IObserver;
+
+import java.util.ArrayList;
+
 public class Game {
     private Board board;
     private Die[] dice;
     private Player currentPlayer;
     private Player[] players;
+
+    private ArrayList<IObserver> observers;
 
     public Game() {
         board = new Board();
@@ -16,6 +22,7 @@ public class Game {
         players[1] = new Player(2);
         currentPlayer = null;
 
+        observers = new ArrayList<IObserver>();
     }
 
     public Board getBoard() {
@@ -55,5 +62,22 @@ public class Game {
             }
         }
 
+    }
+
+    public void registerObserver(IObserver o) {
+        observers.add(o);
+    }
+
+    public void removeObserver(IObserver o) {
+        int i = observers.indexOf(o);
+        if (i >= 0) {
+            observers.remove(o);
+        }
+    }
+
+    public void notifyObservers() {
+        for (IObserver observer : observers) {
+            observer.update();
+        }
     }
 }
