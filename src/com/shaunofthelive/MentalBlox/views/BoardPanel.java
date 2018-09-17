@@ -207,10 +207,17 @@ public class BoardPanel extends JPanel implements IObserver {
         draw(g);
     }
 
-    public void update() {
-        System.out.println("Player 1 rolls " + gameModel.getPlayer(1).getLastRoll());
-        System.out.println("Player 2 rolls " + gameModel.getPlayer(2).getLastRoll());
-        System.out.println("Player " + gameModel.getCurrentPlayer().getPlayerNum()
-                + " starts.");
+    public void update(State state) {
+        switch (state) {
+            case ROLL_FOR_FIRST:
+                System.out.println("Player 1 rolls " + gameModel.getPlayer(1).getLastRoll());
+                System.out.println("Player 2 rolls " + gameModel.getPlayer(2).getLastRoll());
+                System.out.println("Player " + gameModel.getCurrentPlayer().getPlayerNum()
+                        + " starts.");
+                break;
+            case PEG_PLACED:
+                // update pegs
+        }
+
     }
 }

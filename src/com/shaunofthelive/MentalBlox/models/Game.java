@@ -11,6 +11,7 @@ public class Game {
     private Player[] players;
 
     private ArrayList<IObserver> observers;
+    private IObserver.State state;
 
     public Game() {
         board = new Board();
@@ -61,6 +62,12 @@ public class Game {
                 break;
             }
         }
+        state = IObserver.State.ROLL_FOR_FIRST;
+        notifyObservers();
+
+        getBoard().getBox(3).getHole(3).capture(1);
+        getBoard().getBox(4).getHole(5).capture(2);
+        state = IObserver.State.PEG_PLACED;
         notifyObservers();
     }
 
@@ -77,7 +84,7 @@ public class Game {
 
     public void notifyObservers() {
         for (IObserver observer : observers) {
-            observer.update();
+            observer.update(state);
         }
     }
 }

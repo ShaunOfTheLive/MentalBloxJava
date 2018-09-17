@@ -1,5 +1,10 @@
 package com.shaunofthelive.MentalBlox;
 
 public interface IObserver {
-    public void update();
+
+    enum State {
+        ROLL_FOR_FIRST,
+        PEG_PLACED
+    }
+    void update(State state);
 }
