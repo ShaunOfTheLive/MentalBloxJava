@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class SwingGameWindow {
+public class SwingDiceWindow {
 
     private JFrame frame;
     private Game gameModel;
@@ -17,7 +17,7 @@ public class SwingGameWindow {
      * Creates a frame, and sets its size, location, close operation, and
      * resizable status. Then creates a new SwingBoardView and adds the frame to it.
      */
-    public SwingGameWindow(SwingGameView gameView, IGameController controller, Game gameModel) {
+    public SwingDiceWindow(SwingGameView gameView, IGameController controller, Game gameModel) {
         frame = new JFrame();
         frame.setTitle("Mental Blox");
 
@@ -25,7 +25,8 @@ public class SwingGameWindow {
                 .getLocalGraphicsEnvironment();
         Rectangle bounds = env.getMaximumWindowBounds();
         System.out.println("Screen Bounds: " + bounds);
-        frame.setSize(bounds.height - 10, bounds.height - 10);
+        //frame.setSize(bounds.height - 10, bounds.height - 10);
+        frame.setSize(bounds.height / 2, bounds.height / 2);
 
         frame.setLocationRelativeTo(null);
 
@@ -40,12 +41,10 @@ public class SwingGameWindow {
          * we've created a SwingBoardView here as a local variable but we're adding
          * it to frame, so it belongs to frame.
          */
-        SwingBoardView swingBoardView = new SwingBoardView(controller, gameModel);
         //SwingDiceView swingDiceView = new SwingDiceView();
-        //JPanel swingDiceView = new JPanel();
-        frame.add(swingBoardView);
-        //frame.add(swingDiceView);
-        gameView.setBoardView(swingBoardView);
+        JPanel swingDiceView = new JPanel();
+        frame.add(swingDiceView);
+        //gameView.setBoardView(swingBoardView);
     }
 
     public JFrame getFrame() {
@@ -60,7 +59,7 @@ public class SwingGameWindow {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                SwingGameWindow gw = new SwingGameWindow(gameView, controller, gameModel);
+                SwingDiceWindow gw = new SwingDiceWindow(gameView, controller, gameModel);
                 gw.getFrame().setVisible(true);
                 gw.getFrame().addWindowListener(new WindowAdapter() {
                     @Override

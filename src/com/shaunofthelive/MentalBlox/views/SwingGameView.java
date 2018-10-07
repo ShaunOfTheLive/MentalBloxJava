@@ -8,6 +8,7 @@ public class SwingGameView implements IGameView {
 
     public SwingGameView(IGameController controller, Game gameModel) {
         SwingGameWindow.launch(this, controller, gameModel);
+        SwingDiceWindow.launch(this, controller, gameModel);
     }
 
     public SwingBoardView getBoardView() {
