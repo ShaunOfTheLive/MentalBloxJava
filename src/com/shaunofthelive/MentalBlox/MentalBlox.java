@@ -15,9 +15,9 @@ import com.shaunofthelive.MentalBlox.models.Game;
 public class MentalBlox {
 
     /**
-     * Main class. Handles logic(?) and launches SwingGameWindow.
-     * TODO: move game logic into Game?
-     * 
+     * Main class. Creates the main model and main controller (which creates
+     * the main view).
+     *
      * @param args
      */
     public static void main(String[] args) {
