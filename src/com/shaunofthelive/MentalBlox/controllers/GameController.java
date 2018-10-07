@@ -1,20 +1,24 @@
 package com.shaunofthelive.MentalBlox.controllers;
 
 import com.shaunofthelive.MentalBlox.models.Game;
-import com.shaunofthelive.MentalBlox.views.BoardPanel;
-import com.shaunofthelive.MentalBlox.views.GameWindow;
+import com.shaunofthelive.MentalBlox.views.IBoardView;
+import com.shaunofthelive.MentalBlox.views.IGameView;
+import com.shaunofthelive.MentalBlox.views.SwingGameView;
 
 public class GameController implements IController {
     private Game game;
-    private BoardPanel boardPanel;
+    private IGameView gameView;
+    private IBoardView boardView;
 
     public GameController(Game game) {
         this.game = game;
-        GameWindow.launch(this, game);
+        // this could use factory pattern
+        // e.g. createGameView("swing")
+        this.gameView = new SwingGameView(this, game);
     }
 
-    public void setBoardPanel(BoardPanel boardPanel) {
-        this.boardPanel = boardPanel;
+    public void setBoardView(IBoardView boardView) {
+        this.boardView = boardView;
     }
 
     public void start() {

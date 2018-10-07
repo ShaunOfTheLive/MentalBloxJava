@@ -3,43 +3,40 @@ package com.shaunofthelive.MentalBlox.views;
 import com.shaunofthelive.MentalBlox.models.Box;
 
 import java.awt.*;
-import java.awt.font.TextAttribute;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.AttributedString;
 
-public class BoxView {
+public class SwingBoxView {
     private Box boxModel;
     private Point topLeft;
     private int width;
     private int strokeWidth;
-    private HoleView[][] holeViews;
+    private SwingHoleView[][] swingHoleViews;
 
-    public BoxView(Box boxModel) {
+    public SwingBoxView(Box boxModel) {
         this.boxModel = boxModel;
         this.topLeft = new Point(0, 0);
         this.width = 0;
         this.strokeWidth = 1;
     }
 
-    public BoxView(Box boxModel, int strokeWidth) {
+    public SwingBoxView(Box boxModel, int strokeWidth) {
         this.boxModel = boxModel;
         this.topLeft = new Point(0, 0);
         this.width = 0;
         this.strokeWidth = strokeWidth;
-        holeViews = new HoleView[3][3];
+        swingHoleViews = new SwingHoleView[3][3];
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                holeViews[i][j] = new HoleView(boxModel.getHole(i*3+j+3), this);
+                swingHoleViews[i][j] = new SwingHoleView(boxModel.getHole(i*3+j+3), this);
             }
         }
     }
 
-    public BoxView(Box boxModel, Point topLeft, int width) {
+    public SwingBoxView(Box boxModel, Point topLeft, int width) {
         this.boxModel = boxModel;
         this.topLeft = topLeft;
         this.width = width;
@@ -133,7 +130,7 @@ public class BoxView {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                holeViews[i][j].draw(g2d);
+                swingHoleViews[i][j].draw(g2d);
             }
         }
     }
@@ -141,7 +138,7 @@ public class BoxView {
     private void resizeOrMove() {
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
-                holeViews[i][j].setCentre(new Point(Math.round((float)(width*(0.2+0.3*j)) + topLeft.x),
+                swingHoleViews[i][j].setCentre(new Point(Math.round((float)(width*(0.2+0.3*j)) + topLeft.x),
                     Math.round((float)(width*(0.2+0.3*i)) + topLeft.y)));
             }
         }

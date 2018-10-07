@@ -4,15 +4,15 @@ import com.shaunofthelive.MentalBlox.models.Hole;
 
 import java.awt.*;
 
-public class HoleView {
-    private BoxView parent;
+public class SwingHoleView {
+    private SwingBoxView parent;
     private Hole holeModel;
     private Point centre;
     private int width;
     private int radius;
     private int boxWidth;
 
-    public HoleView(Hole holeModel, BoxView parent) {
+    public SwingHoleView(Hole holeModel, SwingBoxView parent) {
         this.holeModel = holeModel;
         this.centre = new Point(0, 0);
         this.width = 0;
@@ -76,7 +76,7 @@ public class HoleView {
             g2d.drawString(holeNumberS, textX, textY);
         }
         if (holeNumber == 6 || holeNumber == 9) {
-            BoxView.drawUnderline(g2d, textX + 1, textY + 4, textX + g2d.getFontMetrics(g2d.getFont()).stringWidth(holeNumberS) - 1, textY + 4);
+            SwingBoxView.drawUnderline(g2d, textX + 1, textY + 4, textX + g2d.getFontMetrics(g2d.getFont()).stringWidth(holeNumberS) - 1, textY + 4);
         }
     }
 }

@@ -3,8 +3,6 @@ package com.shaunofthelive.MentalBlox.views;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -14,16 +12,16 @@ import javax.swing.SwingUtilities;
 import com.shaunofthelive.MentalBlox.controllers.IController;
 import com.shaunofthelive.MentalBlox.models.Game;
 
-public class GameWindow {
+public class SwingGameWindow {
 
     private JFrame frame;
     private Game gameModel;
 
     /**
      * Creates a frame, and sets its size, location, close operation, and
-     * resizable status. Then creates a new BoardPanel and adds the frame to it.
+     * resizable status. Then creates a new SwingBoardView and adds the frame to it.
      */
-    public GameWindow(IController controller, Game gameModel) {
+    public SwingGameWindow(IController controller, Game gameModel) {
         frame = new JFrame();
         frame.setTitle("Mental Blox");
 
@@ -43,12 +41,12 @@ public class GameWindow {
         // frame.pack();
 
         /*
-         * we've created a BoardPanel here as a local variable but we're adding
+         * we've created a SwingBoardView here as a local variable but we're adding
          * it to frame, so it belongs to frame.
          */
-        BoardPanel boardPanel = new BoardPanel(controller, gameModel);
-        frame.add(boardPanel);
-        controller.setBoardPanel(boardPanel);
+        SwingBoardView swingBoardView = new SwingBoardView(controller, gameModel);
+        frame.add(swingBoardView);
+        controller.setBoardView(swingBoardView);
     }
 
     public JFrame getFrame() {
@@ -56,14 +54,14 @@ public class GameWindow {
     }
 
     /**
-     * Creates a GameWindow class (inside a Runnable) and makes it visible.
+     * Creates a SwingGameWindow class (inside a Runnable) and makes it visible.
      */
     public static void launch(IController controller, Game gameModel) {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                GameWindow gw = new GameWindow(controller, gameModel);
+                SwingGameWindow gw = new SwingGameWindow(controller, gameModel);
                 gw.getFrame().setVisible(true);
                 gw.getFrame().addWindowListener(new WindowAdapter() {
                     @Override

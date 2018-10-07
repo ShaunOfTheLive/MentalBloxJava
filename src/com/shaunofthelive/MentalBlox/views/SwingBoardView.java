@@ -7,11 +7,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.geom.Line2D;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,7 +19,7 @@ import com.shaunofthelive.MentalBlox.controllers.IController;
 import com.shaunofthelive.MentalBlox.models.Board;
 import com.shaunofthelive.MentalBlox.models.Game;
 
-public class BoardPanel extends JPanel implements IObserver {
+public class SwingBoardView extends JPanel implements IObserver, IBoardView {
 
     /**
 	 * 
@@ -48,9 +46,9 @@ public class BoardPanel extends JPanel implements IObserver {
 
             int height = getSize().height;
 
-            ((BoardPanel) c).resizePanel(height, height);
+            ((SwingBoardView) c).resizePanel(height, height);
 
-            // TODO: move this to GameWindow constructor, using pack and
+            // TODO: move this to SwingGameWindow constructor, using pack and
             // getInsets?
             // setResizable(false) has 10-pixel bug!
             // if we remove 10 pixels in here, window will keep resizing itself
@@ -70,7 +68,7 @@ public class BoardPanel extends JPanel implements IObserver {
 
     private Line2D[] linesHorz;
     private Line2D[] linesVert;
-    private BoxView[][] boxViews;
+    private SwingBoxView[][] swingBoxViews;
     private int panelWidth;
     private int panelHeight;
 
@@ -84,7 +82,7 @@ public class BoardPanel extends JPanel implements IObserver {
     private IController controller;
 
     /* CONSTRUCTOR */
-    public BoardPanel(IController controller, Game gameModel) {
+    public SwingBoardView(IController controller, Game gameModel) {
         this.controller = controller;
         this.gameModel = gameModel;
         this.boardModel = gameModel.getBoard();
@@ -93,7 +91,7 @@ public class BoardPanel extends JPanel implements IObserver {
 
         linesHorz = new Line2D[4];
         linesVert = new Line2D[4];
-        boxViews = new BoxView[3][3];
+        swingBoxViews = new SwingBoxView[3][3];
 
         for (int i = 0; i < 4; i++) {
             linesHorz[i] = new Line2D.Double();
@@ -107,7 +105,7 @@ public class BoardPanel extends JPanel implements IObserver {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                boxViews[i][j] = new BoxView(boardModel.getBox(i*3+j+3), strokeWidth);
+                swingBoxViews[i][j] = new SwingBoxView(boardModel.getBox(i*3+j+3), strokeWidth);
             }
         }
 
@@ -158,9 +156,9 @@ public class BoardPanel extends JPanel implements IObserver {
             for (int j = 0; j < 3; j++) {
                 Point topLeft = new Point(Math.round((float)(linesHorz[i].getY1()) + halfStroke) + 1,
                         Math.round((float)(linesVert[j].getX1() + halfStroke)) + 1);
-                // boxViews.add(new BoxGraphics(topLeft, width));
-                boxViews[j][i].setTopLeft(topLeft);
-                boxViews[j][i].setWidth(boxWidth);
+                // swingBoxViews.add(new BoxGraphics(topLeft, width));
+                swingBoxViews[j][i].setTopLeft(topLeft);
+                swingBoxViews[j][i].setWidth(boxWidth);
             }
         }
     }
@@ -183,7 +181,7 @@ public class BoardPanel extends JPanel implements IObserver {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                boxViews[i][j].draw(g2d);
+                swingBoxViews[i][j].draw(g2d);
             }
         }
 

@@ -13,7 +13,7 @@ import com.shaunofthelive.MentalBlox.models.Game;
 public class MentalBlox {
 
     /**
-     * Main class. Handles logic(?) and launches GameWindow.
+     * Main class. Handles logic(?) and launches SwingGameWindow.
      * TODO: move game logic into Game?
      * 
      * @param args

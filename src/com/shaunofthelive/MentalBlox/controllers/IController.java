@@ -1,9 +1,10 @@
 package com.shaunofthelive.MentalBlox.controllers;
 
-import com.shaunofthelive.MentalBlox.views.BoardPanel;
+import com.shaunofthelive.MentalBlox.views.IBoardView;
+import com.shaunofthelive.MentalBlox.views.SwingBoardView;
 
 public interface IController {
-    public void setBoardPanel(BoardPanel boardPanel);
+    public void setBoardView(IBoardView boardView);
     public void start();
 }
 
