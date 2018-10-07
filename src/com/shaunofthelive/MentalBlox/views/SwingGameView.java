@@ -10,6 +10,10 @@ public class SwingGameView implements IGameView {
         SwingGameWindow.launch(this, controller, gameModel);
     }
 
+    public SwingBoardView getBoardView() {
+        return boardView;
+    }
+
     public void setBoardView(SwingBoardView boardView) {
         this.boardView = boardView;
     }
