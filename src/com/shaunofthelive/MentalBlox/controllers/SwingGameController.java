@@ -5,20 +5,15 @@ import com.shaunofthelive.MentalBlox.views.IBoardView;
 import com.shaunofthelive.MentalBlox.views.IGameView;
 import com.shaunofthelive.MentalBlox.views.SwingGameView;
 
-public class GameController implements IController {
+public class SwingGameController implements IGameController {
     private Game game;
     private IGameView gameView;
-    private IBoardView boardView;
 
-    public GameController(Game game) {
+    public SwingGameController(Game game) {
         this.game = game;
         // this could use factory pattern
         // e.g. createGameView("swing")
         this.gameView = new SwingGameView(this, game);
-    }
-
-    public void setBoardView(IBoardView boardView) {
-        this.boardView = boardView;
     }
 
     public void start() {

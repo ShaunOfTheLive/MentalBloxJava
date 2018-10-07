@@ -3,7 +3,8 @@
  */
 package com.shaunofthelive.MentalBlox;
 
-import com.shaunofthelive.MentalBlox.controllers.GameController;
+import com.shaunofthelive.MentalBlox.controllers.IGameController;
+import com.shaunofthelive.MentalBlox.controllers.SwingGameController;
 import com.shaunofthelive.MentalBlox.models.Game;
 
 /**
@@ -20,6 +21,6 @@ public class MentalBlox {
      */
     public static void main(String[] args) {
         Game game = new Game();
-        GameController gameController = new GameController(game);
+        IGameController gameController = new SwingGameController(game);
     }
 }

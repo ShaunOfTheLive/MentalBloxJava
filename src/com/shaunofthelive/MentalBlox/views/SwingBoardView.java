@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.shaunofthelive.MentalBlox.IObserver;
-import com.shaunofthelive.MentalBlox.controllers.IController;
+import com.shaunofthelive.MentalBlox.controllers.IGameController;
 import com.shaunofthelive.MentalBlox.models.Board;
 import com.shaunofthelive.MentalBlox.models.Game;
 
@@ -79,10 +79,10 @@ public class SwingBoardView extends JPanel implements IObserver, IBoardView {
 
     private Game gameModel;
     private Board boardModel;
-    private IController controller;
+    private IGameController controller;
 
     /* CONSTRUCTOR */
-    public SwingBoardView(IController controller, Game gameModel) {
+    public SwingBoardView(IGameController controller, Game gameModel) {
         this.controller = controller;
         this.gameModel = gameModel;
         this.boardModel = gameModel.getBoard();

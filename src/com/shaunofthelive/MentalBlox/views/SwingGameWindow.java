@@ -9,7 +9,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import com.shaunofthelive.MentalBlox.controllers.IController;
+import com.shaunofthelive.MentalBlox.controllers.IGameController;
 import com.shaunofthelive.MentalBlox.models.Game;
 
 public class SwingGameWindow {
@@ -21,7 +21,7 @@ public class SwingGameWindow {
      * Creates a frame, and sets its size, location, close operation, and
      * resizable status. Then creates a new SwingBoardView and adds the frame to it.
      */
-    public SwingGameWindow(IController controller, Game gameModel) {
+    public SwingGameWindow(SwingGameView gameView, IGameController controller, Game gameModel) {
         frame = new JFrame();
         frame.setTitle("Mental Blox");
 
@@ -46,7 +46,7 @@ public class SwingGameWindow {
          */
         SwingBoardView swingBoardView = new SwingBoardView(controller, gameModel);
         frame.add(swingBoardView);
-        controller.setBoardView(swingBoardView);
+        gameView.setBoardView(swingBoardView);
     }
 
     public JFrame getFrame() {
@@ -56,12 +56,12 @@ public class SwingGameWindow {
     /**
      * Creates a SwingGameWindow class (inside a Runnable) and makes it visible.
      */
-    public static void launch(IController controller, Game gameModel) {
+    public static void launch(SwingGameView gameView, IGameController controller, Game gameModel) {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                SwingGameWindow gw = new SwingGameWindow(controller, gameModel);
+                SwingGameWindow gw = new SwingGameWindow(gameView, controller, gameModel);
                 gw.getFrame().setVisible(true);
                 gw.getFrame().addWindowListener(new WindowAdapter() {
                     @Override
