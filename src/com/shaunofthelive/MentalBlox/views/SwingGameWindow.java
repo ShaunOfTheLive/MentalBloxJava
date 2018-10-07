@@ -1,16 +1,12 @@
 package com.shaunofthelive.MentalBlox.views;
 
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-
 import com.shaunofthelive.MentalBlox.controllers.IGameController;
 import com.shaunofthelive.MentalBlox.models.Game;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class SwingGameWindow {
 

@@ -1,11 +1,11 @@
 package com.shaunofthelive.MentalBlox.tests;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
+import com.shaunofthelive.MentalBlox.models.Board;
 import org.junit.Test;
 
-import com.shaunofthelive.MentalBlox.models.Board;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 public class BoardTest {
 

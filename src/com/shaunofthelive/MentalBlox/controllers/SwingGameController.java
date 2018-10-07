@@ -1,7 +1,6 @@
 package com.shaunofthelive.MentalBlox.controllers;
 
 import com.shaunofthelive.MentalBlox.models.Game;
-import com.shaunofthelive.MentalBlox.views.IBoardView;
 import com.shaunofthelive.MentalBlox.views.IGameView;
 import com.shaunofthelive.MentalBlox.views.SwingGameView;
 

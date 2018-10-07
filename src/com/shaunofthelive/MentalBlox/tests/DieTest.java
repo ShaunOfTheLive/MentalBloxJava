@@ -1,12 +1,12 @@
 package com.shaunofthelive.MentalBlox.tests;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.number.OrderingComparison.*;
-import static org.junit.Assert.*;
-
+import com.shaunofthelive.MentalBlox.models.Die;
 import org.junit.Test;
 
-import com.shaunofthelive.MentalBlox.models.Die;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
+import static org.hamcrest.number.OrderingComparison.lessThanOrEqualTo;
+import static org.junit.Assert.assertThat;
 
 public class DieTest {
 

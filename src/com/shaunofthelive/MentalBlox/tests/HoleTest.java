@@ -1,13 +1,11 @@
 package com.shaunofthelive.MentalBlox.tests;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 import com.shaunofthelive.MentalBlox.models.Box;
 import com.shaunofthelive.MentalBlox.models.Hole;
+import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class HoleTest {
     Box box = new Box(7);

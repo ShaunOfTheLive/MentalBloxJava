@@ -3,7 +3,6 @@
  */
 package com.shaunofthelive.MentalBlox;
 
-import com.shaunofthelive.MentalBlox.controllers.ConsoleGameController;
 import com.shaunofthelive.MentalBlox.controllers.IGameController;
 import com.shaunofthelive.MentalBlox.controllers.SwingGameController;
 import com.shaunofthelive.MentalBlox.models.Game;

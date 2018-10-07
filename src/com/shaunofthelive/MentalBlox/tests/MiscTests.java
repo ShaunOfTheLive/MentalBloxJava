@@ -1,11 +1,10 @@
 package com.shaunofthelive.MentalBlox.tests;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
+import com.shaunofthelive.MentalBlox.models.Box;
 import org.junit.Test;
 
-import com.shaunofthelive.MentalBlox.models.Box;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class MiscTests {
 

@@ -1,23 +1,15 @@
 package com.shaunofthelive.MentalBlox.views;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.geom.Line2D;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import com.shaunofthelive.MentalBlox.IObserver;
 import com.shaunofthelive.MentalBlox.controllers.IGameController;
 import com.shaunofthelive.MentalBlox.models.Board;
 import com.shaunofthelive.MentalBlox.models.Game;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.geom.Line2D;
 
 public class SwingBoardView extends JPanel implements IObserver, IBoardView {
 
